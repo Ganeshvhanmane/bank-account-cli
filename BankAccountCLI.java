@@ -1,7 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class BankAccountDemo {
+public class BankAccountCLI {
     public static void main(String[] args) {
 
     BankAccount b1 = new BankAccount("Ganesh Vhanmane", 100000.00);
