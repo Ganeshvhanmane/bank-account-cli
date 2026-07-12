@@ -25,11 +25,11 @@ The program lets a user manage a bank account through a text menu:
 1. Make sure you have Java installed.
 2. Compile the program:
    ```
-   javac BankAccountDemo.java
+   javac BankAccountCLI.java
    ```
 3. Run it:
    ```
-   java BankAccountDemo
+   java BankAccountCLI
    ```
 4. Follow the on-screen menu to deposit, withdraw, or check your balance.
 
