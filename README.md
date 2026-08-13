@@ -19,6 +19,7 @@ The program lets a user manage a bank account through a text menu:
 - **Input validation** — the program checks for invalid inputs, like negative deposit amounts or withdrawing more money than the balance.
 - **Exception handling** — `try-catch` blocks handle cases where the user types something that isn't a number, so the program doesn't crash.
 - **Loops and Switch statements** — a `while` loop keeps the menu running until the user chooses to exit, and a `switch` statement handles each menu choice.
+- **Encapsulation** — `accountHolder` and `balance` are `private`, forcing all access through methods like `deposit()`, `withdraw()`, and `showBalance()` instead of direct field access. This protects the validation logic from being bypassed.
 
 ## How to run it
 
@@ -35,7 +36,7 @@ The program lets a user manage a bank account through a text menu:
 
 ## What I'm working on next
 
-This project used basic classes and methods. My next step is learning encapsulation properly (using `private` fields with getters/setters), followed by inheritance, polymorphism, and abstraction — the remaining OOP pillars.
+Next up: inheritance — adding a `SavingsAccount` subclass — followed by polymorphism and abstraction.
 
 ## Note
 
