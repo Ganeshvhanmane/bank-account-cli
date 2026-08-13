@@ -10,8 +10,8 @@ public class BankAccountCLI {
 }
 
 class BankAccount {
-    String accountHolder;
-    double balance;
+    private final String accountHolder;
+    private double balance;
 
     BankAccount(String accountHolder,double balance) {
         this.accountHolder = accountHolder;
@@ -39,7 +39,8 @@ class BankAccount {
     }
 
     void showBalance() {
-        System.out.println(balance);
+
+        System.out.println(accountHolder + "'s balance : " + balance);
     }
 
     void operations() {
