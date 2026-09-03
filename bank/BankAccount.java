@@ -1,28 +1,9 @@
+package bank;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class BankAccountCLI {
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Welcome to the bank\nChoose account type:\n1: Savings Account\n2: Current Account");
-        System.out.print("Please enter your choice : ");
-        int accountType = sc.nextInt();
-
-        BankAccount b1;
-        if (accountType == 1) {
-            SavingsAccount saving = new SavingsAccount("Ganesh Vhanmane", 100000.00);
-            saving.showInterest();
-            b1 = saving;
-        } else {
-            b1 = new CurrentAccount("Ganesh Vhanmane", 100000.00);
-        }
-
-        b1.operations();
-    }
-}
-
-class BankAccount {
+abstract class BankAccount {
     private final String accountHolder;
     private double balance;
 
@@ -30,6 +11,8 @@ class BankAccount {
         this.accountHolder = accountHolder;
         this.balance = balance;
     }
+
+    abstract void showAccountType();
 
     double getBalance() {
         return balance;
@@ -68,8 +51,8 @@ class BankAccount {
         System.out.println("Welcome to your account.");
         Scanner sc = new Scanner(System.in);
         int choice = 0;
-        while (choice != 4) {
-            System.out.print("Choices of operations :\n1 : deposit\n2 : withdraw\n3 : balance\n4 : Exit\nPlease choose an operation : ");
+        while (choice != 5) {
+            System.out.print("Choices of operations :\n1 : Deposit\n2 : Withdraw\n3 : Balance\n4 : Interest\n5 : Exit\nPlease choose an operation : ");
             try {
                 choice = sc.nextInt();
             } catch (InputMismatchException e) {
@@ -107,44 +90,18 @@ class BankAccount {
                     showBalance();
                     break;
                 case 4:
-                    System.out.println("Thank you.");
+                    if (this instanceof SavingsAccount) {
+                        ((SavingsAccount) this).showInterest();
+                    } else {
+                        System.out.println("Interest is not applicable for this account type.");
+                    }
+                    break;
+                case 5:
+                    System.out.println("Thank You.");
                     break;
                 default:
                     System.out.println("Invalid operation.");
             }
-        }
-    }
-}
-
-class SavingsAccount extends BankAccount {
-    private final double interestRate = 4.0; // 4% interest rate
-
-    SavingsAccount(String accountHolder, double balance) {
-        super(accountHolder, balance);
-    }
-
-    void showInterest() {
-        double interest = getBalance() * interestRate / 100;
-        System.out.println("if the amount " + getBalance() + " is kept for 1 year, the interest earned will be : " + interest);
-    }
-}
-
-class CurrentAccount extends BankAccount {
-    private final double overdraftLimit = 1000.00; // Overdraft limit of 1000
-
-    CurrentAccount(String accountHolder, double balance) {
-        super(accountHolder, balance);
-    }
-
-    @Override
-  void withdraw(double amount) {
-        if (amount < 0) {
-            System.out.println("Can not withdraw negative amount.");
-        } else if (amount > getBalance() + overdraftLimit) {
-            System.out.println("Exceeds overdraft limit, cannot withdraw : " + amount);
-        } else {
-            debitBalance(amount);
-            System.out.println(amount + " withdrawn from your account.");
         }
     }
 }
