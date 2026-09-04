@@ -22,7 +22,6 @@ The program lets a user create an account by choosing a type, then manage it thr
 - **Classes and Objects** — `BankAccount`, `SavingsAccount`, and `CurrentAccount` are classes; an object is created based on the account type the user picks.
 - **Constructors** — set up the account holder's name and starting balance, including chaining child constructors to the parent with `super()`.
 - **Methods** — `deposit()`, `withdraw()`, `showBalance()`, `getBalance()` handle core account logic.
-- **Method Overloading (compile-time polymorphism)** — `deposit()` has multiple versions with different parameters.
 - **Input validation** — checks for invalid inputs, like negative or zero deposit/withdrawal amounts, or withdrawing more than allowed.
 - **Exception handling** — `try-catch` blocks handle non-numeric input so the program doesn't crash.
 - **Loops and Switch statements** — a `while` loop keeps the menu running until exit; a `switch` statement handles each choice.
@@ -38,7 +37,7 @@ The program lets a user create an account by choosing a type, then manage it thr
 
 - Encapsulation — done
 - Inheritance — done
-- Polymorphism — done (both runtime overriding and compile-time overloading)
+- Polymorphism — done (runtime overriding; compile-time overloading not yet added)
 - Abstraction — done
 
 ## How to run it
