@@ -12,13 +12,17 @@ public class BankAccountCLI {
 
         BankAccount b1;
         if (accountType == 1) {
-            SavingsAccount saving = new SavingsAccount("Ganesh Vhanmane", 100000.00);
-            b1 = saving;
-        } else {
+            b1 = new SavingsAccount("Ganesh Vhanmane", 100000.00);
+        } else if (accountType == 2) {
             b1 = new CurrentAccount("Ganesh Vhanmane", 100000.00);
+        } else {
+            System.out.println("Invalid account type.");
+
+            sc.close();
+            return;
         }
 
-        b1.showAccountType();
-        b1.operations();
+        b1.operations(sc);
+        sc.close();
     }
 }

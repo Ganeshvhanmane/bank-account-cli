@@ -23,13 +23,13 @@ abstract class BankAccount {
             balance = balance + amount;
             System.out.println(amount + " deposited in your account.");
         } else {
-            System.out.println("Can not deposit negative amount.");
+            System.out.println("Can not deposit 0 or negative amount.");
         }
     }
 
     void withdraw(double amount) {
-        if (amount < 0) {
-            System.out.println("Can not withdraw negative amount.");
+        if (amount <= 0) {
+            System.out.println("Can not withdraw 0 or negative amount.");
         } else if (amount > balance) {
             System.out.println("Insufficient balance, cannot withdraw : " + amount);
         } else {
@@ -47,9 +47,13 @@ abstract class BankAccount {
         System.out.println(accountHolder + "'s balance : " + balance);
     }
 
-    void operations() {
-        System.out.println("Welcome to your account.");
-        Scanner sc = new Scanner(System.in);
+    void showInterest() {
+        System.out.println("Interest calculations are not applicable for this account type.");
+    }
+
+    void operations(Scanner sc) {
+        System.out.print("Welcome to your ");
+        this.showAccountType();
         int choice = 0;
         while (choice != 5) {
             System.out.print("Choices of operations :\n1 : Deposit\n2 : Withdraw\n3 : Balance\n4 : Interest\n5 : Exit\nPlease choose an operation : ");
@@ -90,11 +94,7 @@ abstract class BankAccount {
                     showBalance();
                     break;
                 case 4:
-                    if (this instanceof SavingsAccount) {
-                        ((SavingsAccount) this).showInterest();
-                    } else {
-                        System.out.println("Interest is not applicable for this account type.");
-                    }
+                    showInterest();
                     break;
                 case 5:
                     System.out.println("Thank You.");

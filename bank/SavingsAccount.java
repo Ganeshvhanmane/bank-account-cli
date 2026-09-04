@@ -7,9 +7,10 @@ class SavingsAccount extends BankAccount {
         super(accountHolder, balance);
     }
 
+    @Override
     void showInterest() {
         double interest = getBalance() * interestRate / 100;
-        System.out.println("if the amount " + getBalance() + " is kept for 1 year, the interest earned will be : " + interest);
+        System.out.println("If the amount " + getBalance() + " is kept for 1 year, the interest earned will be: " + interest);
     }
 
     @Override

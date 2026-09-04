@@ -9,7 +9,7 @@ class CurrentAccount extends BankAccount {
 
     @Override
     void withdraw(double amount) {
-        if (amount < 0) {
+        if (amount <= 0) {
             System.out.println("Can not withdraw negative amount.");
         } else if (amount > getBalance() + overdraftLimit) {
             System.out.println("Exceeds overdraft limit, cannot withdraw : " + amount);
@@ -24,5 +24,4 @@ class CurrentAccount extends BankAccount {
         System.out.println("Current Account");
     }
 }
-
 
